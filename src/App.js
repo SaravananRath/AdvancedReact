@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Toggle from '../src/components/toggle';
+import ToggleChildren from '../src/components/toggleChildren';
 
 function App() {
   return (
@@ -18,6 +20,26 @@ function App() {
         >
           Learn React
         </a>
+        <Toggle 
+          render={
+            ({ isVisible, toggle}) => (
+              <div>
+                {isVisible && <h3> Hide N Seek </h3>}
+                <button onClick={() => toggle(!isVisible)}> Show Hide</button>
+              </div>
+            )
+          }
+        />
+        <ToggleChildren>
+          {
+            ({ isVisible, toggle}) => (
+              <div>
+                {isVisible && <h3> Children Toggle </h3>}
+                <button onClick={() => toggle(!isVisible)}> Show Hide</button>
+              </div>
+            )
+          }
+        </ToggleChildren>
       </header>
     </div>
   );
